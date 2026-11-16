@@ -1,9 +1,71 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domel Konin - Lodówki</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domel Konin - Lodówki</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+.btn-add-cart{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:.75rem;padding:.65rem 1rem;border:none;border-radius:6px;background:#0ea5e9;color:#fff;font-weight:600;font-size:.95rem;cursor:pointer}
+.btn-add-cart:hover{background:#0284c7}.btn-add-cart.added{background:#16a34a}
+.cart-badge{display:none;min-width:18px;height:18px;padding:0 5px;background:#e11d48;color:#fff;border-radius:999px;font-size:.72rem;font-weight:700;line-height:18px;text-align:center}
+.cart-link{display:inline-flex;align-items:center;gap:6px}
+</style>
 </head>
-<body>PLACEHOLDER - too large, will use create_or_update</body>
+<body>
+<div class="top-bar">
+<div>Tu jesteśmy: <a href="https://maps.google.com/?q=Al.+1+Maja+15+Konin" target="_blank">al. 1 Maja 15, 62-510 Konin</a> | 📞 <a href="tel:696085262">696 085 262</a></div>
+</div>
+<header>
+<a href="index.html"><img src="images/logo.png" alt="Domel Konin Logo" class="logo-img"></a>
+<nav><ul>
+<li><a href="index.html">STRONA GŁÓWNA</a></li>
+<li><a href="sprzedaz.html">SPRZEDAŻ AGD</a></li>
+<li><a href="index.html#serwis">SERWIS I NAPRAWA</a></li>
+<li><a href="index.html#kontakt">KONTAKT</a></li>
+<li><a href="koszyk.html" class="cart-link">KOSZYK <span class="cart-badge" data-cart-count>0</span></a></li>
+</ul></nav>
+</header>
+<div class="container">
+<h2 class="page-title">Lodówki</h2>
+<div class="products-grid" id="products-grid">
+<!-- produkty wstawiane / istniejące karty – przyciski doda auto_add_cart_buttons.js -->
+</div>
+</div>
+<footer><p>&copy; 2026 DOMEL - Sprzedaż i Serwis AGD.</p></footer>
+<script src="cart.js"></script>
+<script src="auto_add_cart_buttons.js"></script>
+<script>
+// Przywróć listę lodówek z oryginalnej struktury (uproszczona, z przyciskami)
+const products = [
+  {title:"Candy CCG1L314EW", img:"images/zdjecia_produktow/lodowki/Candy_CCG1L314EW.jpg"},
+  {title:"Kernau KFRC 13153.3 LF W", img:"images/zdjecia_produktow/lodowki/Kernau_KFRC_13153_3_LF_W/Kernau_KFRC_13153_3_LF_W1.jpg"},
+  {title:"Kernau KFRC 18153 W", img:"images/zdjecia_produktow/lodowki/Kernau_KFRC_18153_W.jpg"},
+  {title:"SAMSUNG RB38C605CB1", img:"images/zdjecia_produktow/lodowki/SAMSUNG_RB38C605CB1.jpg"},
+  {title:"Samsung Combi Max RB53DG706AB1EO", img:"images/zdjecia_produktow/lodowki/Samsung_Combi_Max_RB53DG706AB1EO.jpg"},
+  {title:"Samsung French Door", img:"images/zdjecia_produktow/lodowki/Samsung_French_Door.png"},
+  {title:"Samsung RB33B610EWW", img:"images/zdjecia_produktow/lodowki/Samsung_RB33B610EWW.jpg"},
+  {title:"Samsung RB38C776CB1EF", img:"images/zdjecia_produktow/lodowki/Samsung_RB38C776CB1EF.jpg"},
+  {title:"Samsung RB7300T Rb38C762CWW", img:"images/zdjecia_produktow/lodowki/Samsung_RB7300T_Rb38C762CWW.jpg"},
+  {title:"samsung RB38C776CB1", img:"images/zdjecia_produktow/lodowki/samsung_RB38C776CB1.jpg"}
+];
+const grid = document.getElementById('products-grid');
+products.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.setAttribute('data-title', p.title.toLowerCase());
+  card.innerHTML = `
+    <div class="product-card-image"><img src="${p.img}" alt="${p.title}" onerror="this.style.display='none'"></div>
+    <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
+    <h3>${p.title}</h3>
+    <p class="opis">Produkt ${p.title} dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
+    <span class="cena">Cena na zapytanie</span>
+    <button type="button" class="btn-add-cart" data-add-to-cart data-title="${p.title}" data-price="Cena na zapytanie">
+      <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+    </button>`;
+  grid.appendChild(card);
+});
+</script>
+</body>
 </html>
