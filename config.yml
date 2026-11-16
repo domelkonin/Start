@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "images/products"
+public_folder: "/images/products"
+
+collections:
+  - name: "products"
+    label: "Produkty"
+    folder: "data"
+    create: true
+    identifier_field: "model"
+    slug: "{{producent}}-{{model}}"
+    fields:
+      - { label: "Producent", name: "producent", widget: "string" }
+      - { label: "Model", name: "model", widget: "string" }
+      - { label: "Kategoria", name: "category", widget: "select", options: [lodowki, pralki, zmywarki, piekarniki, plyty, male_agd, suszarki, zamrazarki] }
+      - { label: "Wymiary", name: "wymiary", widget: "string" }
+      - { label: "Klasa", name: "klasa", widget: "string" }
+      - { label: "Cena", name: "cena", widget: "string" }
+      - { label: "Tytuł", name: "tytul", widget: "string" }
+      - { label: "Opis", name: "opis", widget: "text" }
+      - { label: "Dostępność", name: "dostepnosc", widget: "select", options: [magazyn, salon] }
+      - { label: "Zdjęcia", name: "zdjecia", widget: "list", field: { label: "Zdjęcie", name: "image", widget: "image" } }
