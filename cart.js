@@ -110,8 +110,32 @@
     toast,
   };
 
+  // Auto-add "Dodaj do koszyka" buttons on product cards missing them
+  function autoAddCartButtons() {
+    document.querySelectorAll(".product-card").forEach(function (card) {
+      if (card.querySelector("[data-add-to-cart]")) return;
+      var h3 = card.querySelector("h3");
+      var cenaEl = card.querySelector(".cena");
+      var title = (h3 && h3.textContent.trim()) || "Produkt";
+      var price = (cenaEl && cenaEl.textContent.trim()) || "Cena na zapytanie";
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn-add-cart";
+      btn.setAttribute("data-add-to-cart", "");
+      btn.setAttribute("data-title", title);
+      btn.setAttribute("data-price", price);
+      btn.innerHTML = '<i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka';
+      if (cenaEl && cenaEl.parentNode) {
+        cenaEl.insertAdjacentElement("afterend", btn);
+      } else {
+        card.appendChild(btn);
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     updateBadge();
+    autoAddCartButtons();
 
     document.body.addEventListener("click", function (e) {
       const btn = e.target.closest("[data-add-to-cart]");
