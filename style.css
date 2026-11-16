@@ -1,0 +1,378 @@
+/* ==========================================
+   DOMEL KONIN - GŁÓWNY ARKUSZ STYLÓW (style.css)
+   ========================================== */
+
+/* Reset i ustawienia bazowe */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- GÓRNY PASEK --- */
+#top {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-info {
+    display: flex;
+    gap: 20px;
+}
+
+.top-link {
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.top-link:hover {
+    color: #00d2ff;
+}
+
+.top-social a {
+    color: white;
+    margin-left: 15px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.top-social a:hover {
+    color: #00d2ff;
+}
+
+/* --- NAGŁÓWEK I MENU --- */
+#border {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-wrapper img {
+    height: 50px;
+    width: auto;
+}
+
+.fallback-logo {
+    font-weight: bold;
+}
+.domel-text {
+    font-size: 28px;
+    color: #0056b3;
+    display: block;
+    line-height: 1;
+}
+.sub-text {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #666;
+}
+
+#menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#menu ul li a {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+#menu ul li a:hover {
+    color: #0056b3;
+}
+
+.repair-btn {
+    background-color: #e63946;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.repair-btn:hover {
+    background-color: #c1121f;
+}
+
+/* --- SEKCJE --- */
+.section-padding {
+    padding: 60px 0;
+}
+
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.section-desc {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    color: #666;
+}
+
+/* --- SIATKA USŁUG --- */
+.grid-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+.box-img-placeholder {
+    font-size: 40px;
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+.box h3 {
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+
+.btn-main {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-main:hover {
+    background-color: #003d80;
+}
+
+/* --- PORADY --- */
+.curiosity-box {
+    background: #eef7ff;
+    border-left: 5px solid #0056b3;
+    padding: 25px;
+    border-radius: 4px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.curiosity-box h4 {
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+/* --- FORMULARZ --- */
+.form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+/* --- KONTAKT I MAPA --- */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.social-links-footer a {
+    color: #0056b3;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* --- STOPKA --- */
+footer {
+    background-color: #1a1a1a;
+    color: #aaa;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 900px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    #menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .top-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .top-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* --- WYSZUKIWARKA KATEGORII --- */
+.category-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+}
+.category-search input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+}
+.category-search input:focus {
+    outline: none;
+    border-color: #00d2ff;
+    box-shadow: 0 0 0 3px rgba(0,210,255,0.15);
+}
+.category-search button {
+    padding: 10px 16px;
+    background: #00d2ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.category-search button:hover {
+    background: #00b4ff;
+}
+.no-results {
+    text-align: center;
+    color: #888;
+    padding: 2rem;
+    display: none;
+}
+
+
+/* Przycisk Zapytaj o cenę na kartach produktów */
+.btn-ask {
+    display: inline-block;
+    margin-top: 0.6rem;
+    padding: 0.45rem 0.9rem;
+    background-color: #ff6600;
+    color: #fff !important;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+.btn-ask:hover { background-color: #e55a00; }
