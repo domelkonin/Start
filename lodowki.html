@@ -1,71 +1,285 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Domel Konin - Lodówki</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-.btn-add-cart{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:.75rem;padding:.65rem 1rem;border:none;border-radius:6px;background:#0ea5e9;color:#fff;font-weight:600;font-size:.95rem;cursor:pointer}
-.btn-add-cart:hover{background:#0284c7}.btn-add-cart.added{background:#16a34a}
-.cart-badge{display:none;min-width:18px;height:18px;padding:0 5px;background:#e11d48;color:#fff;border-radius:999px;font-size:.72rem;font-weight:700;line-height:18px;text-align:center}
-.cart-link{display:inline-flex;align-items:center;gap:6px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domel Konin - Lodówki</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card-image {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+            border-radius: 4px;
+            background: #f5f5f5;
+        }
+        .product-card-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            cursor: zoom-in;
+        }
+        .product-card h3 {
+            font-size: 1rem;
+            line-height: 1.35;
+            min-height: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 0.4rem;
+        }
+        .opis {
+            font-size: 0.88rem;
+            color: #555;
+            margin: 0.3rem 0 0.5rem;
+            flex: 1;
+        }
+        .cena {
+            display: block;
+            font-weight: 700;
+            color: #e11d48;
+            margin-bottom: 0.5rem;
+        }
+        .availability {
+            font-size: 0.85rem;
+            color: #16a34a;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .availability-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-local { background: #16a34a; box-shadow: 0 0 0 2px rgba(22,163,74,0.25); }
+        .btn-add-cart {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.65rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background: #0ea5e9;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background .15s;
+        }
+        .btn-add-cart:hover { background: #0284c7; }
+        .btn-add-cart.added { background: #16a34a; }
+        .cart-badge {
+            display: none;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            background: #e11d48;
+            color: #fff;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            line-height: 18px;
+            text-align: center;
+        }
+        .cart-link { display: inline-flex; align-items: center; gap: 6px; }
+        .page-title {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(0,0,0,.85);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            cursor: zoom-out;
+        }
+        #lightbox.open { display: flex; }
+        #lightbox img {
+            max-width: min(96vw, 1000px);
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        #lightbox .lb-close {
+            position: absolute;
+            top: 16px;
+            right: 22px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+    </style>
 </head>
 <body>
-<div class="top-bar">
-<div>Tu jesteśmy: <a href="https://maps.google.com/?q=Al.+1+Maja+15+Konin" target="_blank">al. 1 Maja 15, 62-510 Konin</a> | 📞 <a href="tel:696085262">696 085 262</a></div>
-</div>
-<header>
-<a href="index.html"><img src="images/logo.png" alt="Domel Konin Logo" class="logo-img"></a>
-<nav><ul>
-<li><a href="index.html">STRONA GŁÓWNA</a></li>
-<li><a href="sprzedaz.html">SPRZEDAŻ AGD</a></li>
-<li><a href="index.html#serwis">SERWIS I NAPRAWA</a></li>
-<li><a href="index.html#kontakt">KONTAKT</a></li>
-<li><a href="koszyk.html" class="cart-link">KOSZYK <span class="cart-badge" data-cart-count>0</span></a></li>
-</ul></nav>
-</header>
-<div class="container">
-<h2 class="page-title">Lodówki</h2>
-<div class="products-grid" id="products-grid">
-<!-- produkty wstawiane / istniejące karty – przyciski doda auto_add_cart_buttons.js -->
-</div>
-</div>
-<footer><p>&copy; 2026 DOMEL - Sprzedaż i Serwis AGD.</p></footer>
-<script src="cart.js"></script>
-<script src="auto_add_cart_buttons.js"></script>
-<script>
-// Przywróć listę lodówek z oryginalnej struktury (uproszczona, z przyciskami)
-const products = [
-  {title:"Candy CCG1L314EW", img:"images/zdjecia_produktow/lodowki/Candy_CCG1L314EW.jpg"},
-  {title:"Kernau KFRC 13153.3 LF W", img:"images/zdjecia_produktow/lodowki/Kernau_KFRC_13153_3_LF_W/Kernau_KFRC_13153_3_LF_W1.jpg"},
-  {title:"Kernau KFRC 18153 W", img:"images/zdjecia_produktow/lodowki/Kernau_KFRC_18153_W.jpg"},
-  {title:"SAMSUNG RB38C605CB1", img:"images/zdjecia_produktow/lodowki/SAMSUNG_RB38C605CB1.jpg"},
-  {title:"Samsung Combi Max RB53DG706AB1EO", img:"images/zdjecia_produktow/lodowki/Samsung_Combi_Max_RB53DG706AB1EO.jpg"},
-  {title:"Samsung French Door", img:"images/zdjecia_produktow/lodowki/Samsung_French_Door.png"},
-  {title:"Samsung RB33B610EWW", img:"images/zdjecia_produktow/lodowki/Samsung_RB33B610EWW.jpg"},
-  {title:"Samsung RB38C776CB1EF", img:"images/zdjecia_produktow/lodowki/Samsung_RB38C776CB1EF.jpg"},
-  {title:"Samsung RB7300T Rb38C762CWW", img:"images/zdjecia_produktow/lodowki/Samsung_RB7300T_Rb38C762CWW.jpg"},
-  {title:"samsung RB38C776CB1", img:"images/zdjecia_produktow/lodowki/samsung_RB38C776CB1.jpg"}
-];
-const grid = document.getElementById('products-grid');
-products.forEach(p => {
-  const card = document.createElement('div');
-  card.className = 'product-card';
-  card.setAttribute('data-title', p.title.toLowerCase());
-  card.innerHTML = `
-    <div class="product-card-image"><img src="${p.img}" alt="${p.title}" onerror="this.style.display='none'"></div>
-    <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
-    <h3>${p.title}</h3>
-    <p class="opis">Produkt ${p.title} dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
-    <span class="cena">Cena na zapytanie</span>
-    <button type="button" class="btn-add-cart" data-add-to-cart data-title="${p.title}" data-price="Cena na zapytanie">
-      <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
-    </button>`;
-  grid.appendChild(card);
-});
-</script>
+
+    <div id="top">
+        <div class="container top-container">
+            <div class="top-info">
+                <a href="https://www.google.com/maps/place/Aleje+1+Maja+15,+62-510+Konin" target="_blank" class="top-link">
+                    <i class="fa-solid fa-location-dot"></i> al. 1 Maja 15 | 62-510 Konin
+                </a>
+                <a href="tel:696085262" class="top-link phone-link">
+                    <i class="fa-solid fa-phone"></i> 696 085 262
+                </a>
+            </div>
+            <div class="top-social">
+                <a href="https://www.facebook.com/profile.php?id=61594405195116" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/outletdomel/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header id="border">
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Domel Konin Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="fallback-logo" style="display:none;">
+                        <span class="domel-text">DOMEL</span>
+                        <span class="sub-text">KONIN</span>
+                    </div>
+                </a>
+            </div>
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html">STRONA GŁÓWNA</a></li>
+                    <li><a href="sprzedaz.html" style="color:#00b4ff;">SPRZEDAŻ AGD</a></li>
+                    <li><a href="magazyn.html">MAGAZYN</a></li>
+                    <li><a href="promocje.html">PROMOCJE DNIA</a></li>
+                    <li><a href="koszyk.html" class="cart-link">KOSZYK <span class="cart-badge" data-cart-count>0</span></a></li>
+                    <li><a href="index.html#contact">KONTAKT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="page-title">Lodówki</h2>
+            <p class="section-desc">Lodówki wolnostojące i do zabudowy dostępne w salonie Domel Konin. Dodaj produkt do koszyka i poproś o wycenę.</p>
+
+            <div class="category-search" style="margin: 0 auto 1.5rem;">
+                <input type="text" id="catSearchInput" placeholder="Szukaj lodówki (marka, model)..." oninput="filterCatProducts()" autocomplete="off">
+                <button type="button" onclick="filterCatProducts()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div id="noResults" class="no-results">Brak pasujących produktów</div>
+
+            <div class="products-grid" id="products-grid"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 DOMEL Konin - Sprzedaż i Serwis AGD. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <span class="lb-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Powiększone zdjęcie">
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        const products = [
+            { title: "Candy CCG1L314EW", img: "images/zdjecia_produktow/lodowki/Candy_CCG1L314EW.jpg" },
+            { title: "Kernau KFRC 13153.3 LF W", img: "images/zdjecia_produktow/lodowki/Kernau_KFRC_13153_3_LF_W/Kernau_KFRC_13153_3_LF_W1.jpg" },
+            { title: "Kernau KFRC 18153 W", img: "images/zdjecia_produktow/lodowki/Kernau_KFRC_18153_W.jpg" },
+            { title: "SAMSUNG RB38C605CB1", img: "images/zdjecia_produktow/lodowki/SAMSUNG_RB38C605CB1.jpg" },
+            { title: "Samsung Combi Max RB53DG706AB1EO", img: "images/zdjecia_produktow/lodowki/Samsung_Combi_Max_RB53DG706AB1EO.jpg" },
+            { title: "Samsung French Door", img: "images/zdjecia_produktow/lodowki/Samsung_French_Door.png" },
+            { title: "Samsung RB33B610EWW", img: "images/zdjecia_produktow/lodowki/Samsung_RB33B610EWW.jpg" },
+            { title: "Samsung RB38C776CB1EF", img: "images/zdjecia_produktow/lodowki/Samsung_RB38C776CB1EF.jpg" },
+            { title: "Samsung RB7300T Rb38C762CWW", img: "images/zdjecia_produktow/lodowki/Samsung_RB7300T_Rb38C762CWW.jpg" },
+            { title: "Samsung RB38C776CB1", img: "images/zdjecia_produktow/lodowki/samsung_RB38C776CB1.jpg" }
+        ];
+
+        const grid = document.getElementById('products-grid');
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.setAttribute('data-title', p.title.toLowerCase());
+            card.setAttribute('data-keywords', p.title.toLowerCase());
+            card.innerHTML = `
+                <div class="product-card-image">
+                    <img src="${p.img}" alt="${p.title}" onclick="openLightbox(this.src)" onerror="this.style.display='none'">
+                </div>
+                <div class="availability"><span class="availability-dot dot-local"></span> Dostępny lokalnie</div>
+                <h3>${p.title}</h3>
+                <p class="opis">Produkt dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.</p>
+                <span class="cena">Cena na zapytanie</span>
+                <button type="button" class="btn-add-cart"
+                    data-add-to-cart
+                    data-title="${p.title}"
+                    data-price="Cena na zapytanie"
+                    data-image="${p.img}">
+                    <i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka
+                </button>`;
+            grid.appendChild(card);
+        });
+
+        function filterCatProducts() {
+            const input = document.getElementById('catSearchInput');
+            if (!input) return;
+            const val = input.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+            let visible = 0;
+            cards.forEach(card => {
+                const title = (card.getAttribute('data-title') || '').toLowerCase();
+                const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+                if (!val || title.includes(val) || keywords.includes(val)) {
+                    card.style.display = '';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            const noRes = document.getElementById('noResults');
+            if (noRes) noRes.style.display = (visible === 0 && val) ? 'block' : 'none';
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
 </body>
 </html>
