@@ -199,6 +199,22 @@
       "zdjecia": [
         "images/zdjecia_produktow/piekarniki/Gorenje_GKS5C71XF_G600.jpg"
       ]
+    },
+    {
+      "tytul": "Electrolux COD8H39Z",
+      "opis": "Piekarnik Electrolux COD8H39Z z oferty outletowej Domel AGD & Klimatyzacja. Pojemność 72 litry, klasa energetyczna A+, czyszczenie Aqua Clean, moc 3490 W, funkcje SteamBake, Termosonda, TFT. Gwarancja 12 miesięcy. Cena internetowa 2500 zł, nasza cena 2200 zł (oszczędność 300 zł).",
+      "cena": "2200 zł",
+      "zdjecia": [
+        "images/zdjecia_produktow/piekarniki/Electrolux_COD8H39Z.png"
+      ]
+    },
+    {
+      "tytul": "Electrolux EOD6C71X",
+      "opis": "Piekarnik Electrolux EOD6C71X z oferty outletowej Domel AGD & Klimatyzacja. Pojemność 72 litry, klasa energetyczna A+, czyszczenie katalityczne, moc 3480 W, funkcje SteamBake, Termosonda, termoobieg. Gwarancja 12 miesięcy. Cena internetowa 2200 zł, nasza cena 1900 zł (oszczędność 300 zł).",
+      "cena": "1900 zł",
+      "zdjecia": [
+        "images/zdjecia_produktow/piekarniki/Electrolux_EOD6C71X.png"
+      ]
     }
   ],
   "male_agd.html": [
@@ -208,6 +224,34 @@
       "cena": "Cena na zapytanie",
       "zdjecia": [
         "images/zdjecia_produktow/MALE_AGD/SIMENS_EQ_700_CLASSIC.jpg"
+      ]
+    }
+  ],
+  "plyty_grzewcze.html": [
+    {
+      "tytul": "Siemens EH675FFC1E",
+      "opis": "Płyta indukcyjna Siemens EH675FFC1E z oferty outletowej Domel AGD & Klimatyzacja. 4 pola grzewcze, moc przyłączenia 7400 W, sterowanie TouchSlider, funkcje PowerBoost i FryingSensor. Gwarancja 12 miesięcy. Cena internetowa 1800 zł, nasza cena 1500 zł (oszczędność 300 zł).",
+      "cena": "1500 zł",
+      "zdjecia": [
+        "images/zdjecia_produktow/plyty_grzewcze/Siemens_EH675FFC1E.png"
+      ]
+    },
+    {
+      "tytul": "Beko HII64400SMT",
+      "opis": "Płyta indukcyjna Beko HII64400SMT z oferty outletowej Domel AGD & Klimatyzacja. 4 pola grzewcze, moc przyłączenia 7200 W, sterowanie dotykowe, funkcje Booster i Timer. Gwarancja 12 miesięcy. Cena internetowa 1100 zł, nasza cena 800 zł (oszczędność 300 zł).",
+      "cena": "800 zł",
+      "zdjecia": [
+        "images/zdjecia_produktow/plyty_grzewcze/Beko_HII64400SMT.png"
+      ]
+    }
+  ],
+  "suszarki.html": [
+    {
+      "tytul": "Beko BM1T38239W",
+      "opis": "Suszarka Beko BM1T38239W z pompą ciepła z oferty outletowej Domel AGD & Klimatyzacja. Pojemność 8 kg, klasa energetyczna D, głębokość 47 cm (Slim), funkcje AquaWave i 15 programów. Gwarancja 12 miesięcy. Cena internetowa 2000 zł, nasza cena 1700 zł (oszczędność 300 zł).",
+      "cena": "1700 zł",
+      "zdjecia": [
+        "images/zdjecia_produktow/suszarki/Beko_BM1T38239W.png"
       ]
     }
   ]
