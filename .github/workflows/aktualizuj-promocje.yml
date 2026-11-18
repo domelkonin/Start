@@ -48,7 +48,7 @@ jobs:
           GT_B2B_EMAIL: ${{ secrets.GT_B2B_EMAIL }}
           GT_B2B_PASSWORD: ${{ secrets.GT_B2B_PASSWORD }}
         run: |
-          python download_promocje_b2b.py --margin 200
+          python download_promocje_b2b.py --margin 15
 
       - name: Generowanie promocje.html
         run: |

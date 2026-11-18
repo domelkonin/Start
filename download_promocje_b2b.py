@@ -44,7 +44,7 @@ JSON_PATH = ROOT / "promocje.json"
 IMG_DIR = ROOT / "images" / "promocje"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 LOGIN_URL = "https://b2bgt.gtpoland.eu/strefa-ofert/promocje-dnia-b2b"
-DEFAULT_MARGIN = 100
+DEFAULT_MARGIN = 15
 
 
 def parse_price(text: str):
@@ -307,7 +307,7 @@ def build_products(raw, page, margin: int):
         base = before if before is not None else brutto
         if base is None:
             continue
-        detal = base + margin
+        detal = round(base * (1 + margin / 100))
         seen.add(name.lower())
         img_url = it.get("img") or ""
         local_rel = "images/logo.png"
@@ -361,7 +361,7 @@ def main():
         print("Ustaw GT_B2B_EMAIL i GT_B2B_PASSWORD")
         print("  python download_promocje_b2b.py --headed")
         sys.exit(1)
-    print(f"Cena klienta = kwota SPRZED promocji + {margin} zl")
+    print(f"Cena klienta = kwota SPRZED promocji + {margin}%")
     print(f"URL: {LOGIN_URL}")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=not args.headed)

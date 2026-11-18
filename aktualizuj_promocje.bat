@@ -4,7 +4,7 @@ setlocal EnableExtensions
 
 REM ============================================================
 REM  Domel Konin - codzienna aktualizacja promocji dnia (GT B2B)
-REM  Cena na stronie = Cena BRUTTO + 200 zl
+REM  Cena na stronie = Cena BRUTTO + 15%
 REM
 REM  Ustaw login/haslo przez zmienne srodowiskowe:
 REM    set GT_B2B_EMAIL=twoj@email.pl
@@ -16,7 +16,7 @@ set "PROJECT_DIR=%~dp0"
 cd /d "%PROJECT_DIR%"
 
 set "LOG_FILE=%PROJECT_DIR%promocje_update.log"
-set "MARGIN=200"
+set "MARGIN=15"
 
 echo ========================================>> "%LOG_FILE%"
 echo Start: %DATE% %TIME%>> "%LOG_FILE%"
