@@ -31,6 +31,17 @@
 <p style="text-align:center;margin:2rem 0">Obecnie brak produktów w tej kategorii w ofercie online.<br>
 Zadzwoń: <a href="tel:696085262">696 085 262</a> · <a href="magazyn.html">Magazyn</a> · <a href="promocje.html">Promocje dnia</a></p>
 </div></section>
+<div class="products-grid" id="products-grid"></div>
+<script>
+const products=[
+{title:"Siemens EH675FFC1E",img:"images/zdjecia_produktow/plyty/Siemens_EH675FFC1E.jpg",desc:"Plyta indukcyjna, 4 pola, moc 7400 W, sterowanie TouchSlider, PowerBoost, FryingSensor. Nowa, gwarancja 12 mies.",price:"1500 zl (zamiast 1800 zl)"},
+{title:"Beko HII64400SMT",img:"images/zdjecia_produktow/plyty/Beko_HII64400SMT.jpg",desc:"Plyta indukcyjna, 4 pola, moc 7200 W, sterowanie dotykowe, Booster, Timer. Nowa, gwarancja 12 mies.",price:"800 zl (zamiast 1100 zl)"}
+];
+const grid=document.getElementById('products-grid');
+products.forEach(p=>{const c=document.createElement('div');c.className='product-card';c.setAttribute('data-title',p.title.toLowerCase());
+c.innerHTML=`<div class="product-card-image"><img src="${p.img}" alt="${p.title}" onclick="openLightbox(this.src)" onerror="this.src='images/logo.png'"></div>
+<div class="availability">Dostepny lokalnie</div><h3>${p.title}</h3><p class="opis">${p.desc}</p><span class="cena">${p.price}</span>
+<button type="button" class="btn-add-cart" data-add-to-cart data-title="${p.title}" data-price="${p.price}" data-image="${p.img}"><i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka</button>`;grid.appendChild(c)});</script>
 <footer><div class="container footer-content"><p>&copy; 2026 DOMEL Konin - Sprzedaż i Serwis AGD.</p></div></footer>
 <script src="cart.js"></script>
 </body></html>
