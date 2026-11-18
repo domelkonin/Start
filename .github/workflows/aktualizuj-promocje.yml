@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Pobierz kod repozytorium
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Konfiguracja Pythona
         uses: actions/setup-python@v5
@@ -61,8 +63,13 @@ jobs:
 
           if git diff --staged --quiet; then
             echo "Brak zmian w promocjach – pomijam commit."
-          else
-            git commit -m "Automatyczna aktualizacja promocji dnia $(date -u +%Y-%m-%d)"
-            git push
-            echo "Push OK – strona na GitHub Pages odświeży się za 1–2 min."
+            exit 0
           fi
+
+          git commit -m "Automatyczna aktualizacja promocji dnia $(date -u +%Y-%m-%d)"
+
+          # Remote mógł dostać nowe commity w trakcie joba – najpierw zsynchronizuj
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+          echo "Push OK – strona na GitHub Pages odświeży się za 1–2 min."
