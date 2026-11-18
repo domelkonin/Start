@@ -169,30 +169,6 @@
   ],
   "piekarniki.html": [
     {
-      "tytul": "Amica 6018GG4.43HZpFQ(Xx)",
-      "opis": "Produkt Amica 6018GG4.43HZpFQ(Xx) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
-      "cena": "Cena na zapytanie",
-      "zdjecia": [
-        "images/zdjecia_produktow/piekarniki/Amica_6018GG4_43HZpFQ_Xx.jpg"
-      ]
-    },
-    {
-      "tytul": "Electrolux LKK640221W",
-      "opis": "Produkt Electrolux LKK640221W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
-      "cena": "Cena na zapytanie",
-      "zdjecia": [
-        "images/zdjecia_produktow/piekarniki/Electrolux_LKK640221W.jpg"
-      ]
-    },
-    {
-      "tytul": "Gorenje GKS5C71XF (G600)",
-      "opis": "Produkt Gorenje GKS5C71XF (G600) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
-      "cena": "Cena na zapytanie",
-      "zdjecia": [
-        "images/zdjecia_produktow/piekarniki/Gorenje_GKS5C71XF_G600.jpg"
-      ]
-    },
-    {
       "tytul": "Electrolux COD8H39Z",
       "opis": "Piekarnik Electrolux COD8H39Z z oferty outletowej Domel AGD & Klimatyzacja. Pojemność 72 litry, klasa energetyczna A+, czyszczenie Aqua Clean, moc 3490 W, funkcje SteamBake, Termosonda, TFT. Gwarancja 12 miesięcy. Cena internetowa 2500 zł, nasza cena 2200 zł (oszczędność 300 zł).",
       "cena": "2200 zł",
@@ -244,6 +220,32 @@
       "cena": "1700 zł",
       "zdjecia": [
         "images/zdjecia_produktow/suszarki/Beko_BM1T38239W.png"
+      ]
+    }
+  ],
+  "kuchenki.html": [
+    {
+      "tytul": "Amica 6018GG4.43HZpFQ(Xx)",
+      "opis": "Produkt Amica 6018GG4.43HZpFQ(Xx) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjecia_produktow/kuchenki/Amica_6018GG4_43HZpFQ_Xx.jpg"
+      ]
+    },
+    {
+      "tytul": "Electrolux LKK640221W",
+      "opis": "Produkt Electrolux LKK640221W dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjecia_produktow/kuchenki/Electrolux_LKK640221W.jpg"
+      ]
+    },
+    {
+      "tytul": "Gorenje GKS5C71XF (G600)",
+      "opis": "Produkt Gorenje GKS5C71XF (G600) dostępny w salonie Domel Konin. Zapraszamy do kontaktu po szczegóły i aktualną cenę.",
+      "cena": "Cena na zapytanie",
+      "zdjecia": [
+        "images/zdjecia_produktow/kuchenki/Gorenje_GKS5C71XF_G600.jpg"
       ]
     }
   ]
