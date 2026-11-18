@@ -54,13 +54,15 @@
 const products=[
 {title:"Amica 6018GG4.43HZpFQ(Xx)",img:"images/zdjecia_produktow/pierkarniki/Amica_6018GG4_43HZpFQ_Xx.jpg"},
 {title:"Electrolux LKK640221W",img:"images/zdjecia_produktow/pierkarniki/Electrolux_LKK640221W.jpg"},
-{title:"Gorenje GKS5C71XF (G600)",img:"images/zdjecia_produktow/pierkarniki/Gorenje_GKS5C71XF_G600.jpg"}
+{title:"Gorenje GKS5C71XF (G600)",img:"images/zdjecia_produktow/pierkarniki/Gorenje_GKS5C71XF_G600.jpg"},
+{title:"Electrolux EOD6C71X",img:"images/zdjecia_produktow/pierkarniki/Electrolux_EOD6C71X.jpg",desc:"Piekarnik elektryczny do zabudowy, 72 l, klasa A+, czyszczenie katalityczne, 3480 W, SteamBake, Termosonda, Termoobieg. Nowy, gwarancja 12 mies.",price:"1900 zł (zamiast 2200 zł)"},
+{title:"Electrolux COD8H39Z",img:"images/zdjecia_produktow/pierkarniki/Electrolux_COD8H39Z.jpg",desc:"Piekarnik elektryczny do zabudowy, czarny szkło, 72 l, klasa A+, czyszczenie Aqua Clean, 3490 W, SteamBake, Termosonda, TFT. Nowy, gwarancja 12 mies.",price:"2200 zł (zamiast 2500 zł)"}
 ];
 const grid=document.getElementById('products-grid');
 products.forEach(p=>{const c=document.createElement('div');c.className='product-card';c.setAttribute('data-title',p.title.toLowerCase());
 c.innerHTML=`<div class="product-card-image"><img src="${p.img}" alt="${p.title}" onclick="openLightbox(this.src)" onerror="this.src='images/logo.png'"></div>
-<div class="availability">● Dostępny lokalnie</div><h3>${p.title}</h3><p class="opis">Produkt dostępny w salonie Domel Konin.</p><span class="cena">Cena na zapytanie</span>
-<button type="button" class="btn-add-cart" data-add-to-cart data-title="${p.title}" data-price="Cena na zapytanie" data-image="${p.img}"><i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka</button>`;grid.appendChild(c)});
+<div class="availability">● Dostępny lokalnie</div><h3>${p.title}</h3><p class="opis">${p.desc||'Produkt dostępny w salonie Domel Konin.'}</p><span class="cena">${p.price||'Cena na zapytanie'}</span>
+<button type="button" class="btn-add-cart" data-add-to-cart data-title="${p.title}" data-price="${p.price||'Cena na zapytanie'}" data-image="${p.img}"><i class="fa-solid fa-cart-plus"></i> Dodaj do koszyka</button>`;grid.appendChild(c)});
 function filterCatProducts(){const v=(document.getElementById('catSearchInput').value||'').toLowerCase().trim();let n=0;document.querySelectorAll('.product-card').forEach(c=>{const ok=!v||(c.getAttribute('data-title')||'').includes(v);c.style.display=ok?'':'none';if(ok)n++});const nr=document.getElementById('noResults');if(nr)nr.style.display=(n===0&&v)?'block':'none'}
 function openLightbox(s){document.getElementById('lightbox-img').src=s;document.getElementById('lightbox').classList.add('open')}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('open')}
