@@ -6,17 +6,14 @@ REM ============================================================
 REM  Domel Konin - codzienna aktualizacja promocji dnia (GT B2B)
 REM  Cena na stronie = Cena BRUTTO + 200 zl
 REM
-REM  1. Uzupelnij EMAIL i HASLO ponizej ALBO ustaw zmienne systemowe
-REM  2. Uruchom recznie albo dodaj do Harmonogramu zadan Windows
+REM  Ustaw login/haslo przez zmienne srodowiskowe:
+REM    set GT_B2B_EMAIL=twoj@email.pl
+REM    set GT_B2B_PASSWORD=twoje_haslo
+REM  albo w Harmonogramie zadan (NIE wrzucaj hasel do repo!).
 REM ============================================================
 
-REM --- KONFIGURACJA ---
 set "PROJECT_DIR=%~dp0"
 cd /d "%PROJECT_DIR%"
-
-REM Login B2B - WYPELNIJ (nie wrzucaj tego pliku z haslem na GitHub!)
-if not defined GT_B2B_EMAIL set "GT_B2B_EMAIL=domel@domel.kalisz.pl"
-if not defined GT_B2B_PASSWORD set "GT_B2B_PASSWORD=Domel12345@"
 
 set "LOG_FILE=%PROJECT_DIR%promocje_update.log"
 set "MARGIN=200"
@@ -30,7 +27,6 @@ echo [Domel] Aktualizacja promocji dnia...
 echo Katalog: %PROJECT_DIR%
 echo.
 
-REM Sprawdz Python
 where python >nul 2>&1
 if errorlevel 1 (
     echo BLAD: Brak polecenia "python" w PATH.
@@ -39,12 +35,17 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM Sprawdz czy nie zostalo domyslne haslo
-echo %GT_B2B_EMAIL% | findstr /I "WPROWADZ_EMAIL" >nul
-if not errorlevel 1 (
-    echo BLAD: Uzupelnij GT_B2B_EMAIL i GT_B2B_PASSWORD w pliku aktualizuj_promocje.bat
-    echo        albo ustaw zmienne srodowiskowe przed uruchomieniem.
+if not defined GT_B2B_EMAIL (
+    echo BLAD: Ustaw zmienne GT_B2B_EMAIL i GT_B2B_PASSWORD przed uruchomieniem.
+    echo        set GT_B2B_EMAIL=...
+    echo        set GT_B2B_PASSWORD=...
     echo BLAD: brak danych logowania>> "%LOG_FILE%"
+    pause
+    exit /b 1
+)
+if not defined GT_B2B_PASSWORD (
+    echo BLAD: Ustaw GT_B2B_PASSWORD.
+    echo BLAD: brak hasla>> "%LOG_FILE%"
     pause
     exit /b 1
 )
