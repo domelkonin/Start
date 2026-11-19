@@ -44,7 +44,7 @@ JSON_PATH = ROOT / "promocje.json"
 IMG_DIR = ROOT / "images" / "promocje"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 LOGIN_URL = "https://b2bgt.gtpoland.eu/strefa-ofert/promocje-dnia-b2b"
-DEFAULT_MARGIN = 15
+DEFAULT_MARGIN = 10
 
 
 def parse_price(text: str):
