@@ -304,9 +304,9 @@ def build_products(raw, page, margin: int):
                     before = max(higher)
             if before is None and candidates:
                 before = max(candidates)
-        base = before if before is not None else brutto
-        if base is None:
+        if brutto is None:
             continue
+        base = brutto
         detal = round(base * (1 + margin / 100))
         seen.add(name.lower())
         img_url = it.get("img") or ""
@@ -336,7 +336,7 @@ def build_products(raw, page, margin: int):
                 "cena_brutto_hurt": brutto,
                 "cena_przed_promocja": before,
                 "cena": f"{detal} zł",
-                "cena_stara": "",
+                "cena_stara": (f"{before} zl" if before is not None else ""),
                 "opis": opis,
                 "zdjecie": local_rel,
                 "zdjecie_duze": local_rel,

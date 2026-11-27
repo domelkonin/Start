@@ -53,9 +53,13 @@ html = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Domel Konin - promocje dnia AGD: lodowki, pralki, zmywarki, piekarniki. Ceny hurtowe + marza. al. 1 Maja 15.">
+    <meta property="og:title" content="Domel Konin - Promocje dnia">
+    <meta property="og:description" content="Aktualne promocje AGD w Domel Konin.">
+    <meta property="og:type" content="website">
     <title>Domel Konin - Promocje dnia ({len(products)} szt.)</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
     <style>
         .products-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }}
         .product-card {{ background: #fff; border-radius: 8px; padding: 1.2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: relative; display: flex; flex-direction: column; }}
